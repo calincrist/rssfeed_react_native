@@ -1,5 +1,5 @@
 {
   "semi": false,
   "singleQuote": true,
-  "trailingCome": "es6"
+  "trailingCome": true
 }

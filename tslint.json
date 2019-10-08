@@ -12,7 +12,18 @@
     "object-literal-sort-keys": false,
     "member-ordering": false,
     "jsx-no-lambda": false,
-    "jsx-boolean-value": false
+    "jsx-boolean-value": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "noImplicitAny": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true
+  },
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "allowJs": true
   },
   "rulesDirectory": []
 }

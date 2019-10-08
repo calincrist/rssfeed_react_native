@@ -15,12 +15,15 @@ import {
   Text,
   StatusBar
 } from 'react-native'
+import { Provider } from 'mobx-react'
+import AppContainer from './src/navigation/AppContainer'
+import store from './src/store'
 
 const App: FunctionComponent<{}> = (props: {}) => {
   return (
-    <View>
-      <Text>Texty</Text>
-    </View>
+    <Provider store={store}>
+      <AppContainer />
+    </Provider>
   )
 }
 
