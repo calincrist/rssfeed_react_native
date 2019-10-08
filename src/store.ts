@@ -1,19 +1,29 @@
-import { observable } from 'mobx'
+import { decorate, observable } from 'mobx'
 import { AsyncStorage } from 'react-native'
+
+export interface IEntry {
+  title: string
+  description: string
+  link: string
+  pubdate: string
+}
 
 export interface IFeed {
   title: string
   url: string
-  entry: string
+  entry: IEntry[]
   updated: boolean
 }
 
 export class Store {
-  @observable feeds
-  @observable selectedFeed
-  @observable selectedEntry
+  public feeds: IFeed[] = []
+  public selectedFeed: IFeed = null
+  public selectedEntry: string = null
 
   private persistFeeds = async () => {
+    console.log('Persiting feeds:', {
+      feeds: this.feeds
+    })
     await AsyncStorage.setItem('@feeds', JSON.stringify(this.feeds))
   }
 
@@ -26,6 +36,10 @@ export class Store {
   }
 
   public addFeed = async (url: string, feed: IFeed) => {
+    console.log({
+      url,
+      feed
+    })
     this.feeds.push({
       url,
       title: feed.title,
@@ -51,6 +65,12 @@ export class Store {
     this.selectedEntry = entry
   }
 }
+
+decorate(Store, {
+  feeds: observable,
+  selectFeed: observable,
+  selectEntry: observable
+})
 
 const store = new Store()
 export default store
